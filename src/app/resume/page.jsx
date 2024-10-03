@@ -49,7 +49,7 @@ const experience = {
     {
       company: "Grupo WG",
       position: "Web developer",
-      duration: "2021 - 2022 (1 year)",
+      duration: "2021-2022 (1 year)",
     }
   ]
 }
@@ -154,7 +154,7 @@ const SkillCard = ({ skill }) => (
           <div className="text-6xl group-hover:text-accent-hover transition-all duration-300">
             {skill.icon}
           </div>
-          <span className="mt-2 text-sm text-center">{skill.title}</span>
+          <span className="mt-2 text-sm text-center text-white/80">{skill.title}</span>
         </TooltipTrigger>
         <TooltipContent>
           <p className="max-w-[200px] text-sm">{skill.description}</p>
@@ -193,7 +193,7 @@ function Resume() {
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{experience.description}</p>
+                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{experience.description}</p>
                 <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 xl:grid-cols-2 gap-[30px]">
                     {experience.items.map((item, index) => (
@@ -209,7 +209,7 @@ function Resume() {
                         <div className="flex items-center gap-3">
                           {/* Dot */ }
                           <span className="w-[6px] h-[6px] rounded-full bg-accent-default"></span>
-                          <p className="text-white/60">{item.position}</p>
+                          <p className="text-white/80">{item.position}</p>
                         </div>
                       </li>
                     ))}
@@ -222,7 +222,7 @@ function Resume() {
             <TabsContent value="education" className="w-full">
             <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{education.description}</p>
+                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{education.description}</p>
                 <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
                     {education.items.map((item, index) => (
@@ -238,7 +238,7 @@ function Resume() {
                         <div className="flex items-center gap-3">
                           {/* Dot */ }
                           <span className="w-[6px] h-[6px] rounded-full bg-accent-default"></span>
-                          <p className="text-white/60 w-full">{item.institution}</p>
+                          <p className="text-white/80 w-full">{item.institution}</p>
                         </div>
                       </li>
                     ))}
@@ -253,7 +253,7 @@ function Resume() {
                 <div className="flex flex-col gap-[30px]">
                   <div className="text-center xl:text-left">
                     <h3 className="text-4xl font-bold mb-4">Skills</h3>
-                    <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0 mb-8">
+                    <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 mb-8">
                       In addition to my technical skills, I possess interpersonal competencies that enhance my teamwork. I excel in effective communication, allowing me to express my ideas clearly and facilitate collaboration with colleagues and clients. I approach challenges with an analytical mindset, seeking creative and efficient solutions, and I quickly adapt to new situations and feedback. I value collaboration and the contributions of others, fostering a positive and productive environment.
                       Here are my key technical skills and areas of expertise:
                     </p>
@@ -271,13 +271,13 @@ function Resume() {
             <TabsContent value="about" className="w-full text-center xl:text-left">
               <div className="flex flex-col gap-[30px]">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{about.description}</p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6  gap-x-3 max-w-[620px] mx-auto xl:mx-0">
+                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{about.description}</p>
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6  gap-x-4 max-w-[620px] mx-auto xl:mx-0">
                   {about.info.map((item, index) => {
                     return (
                       <li key={index} className="flex items-center justify-center xl:justify-start xl:items-start gap-3">
-                        <span className="text-white/60">{item.fieldName}</span>
-                        <span className="text-lg">{item.fieldValue}</span>
+                        <span className="text-white/70">{item.fieldName}</span>
+                        <span className="text-md">{item.fieldValue}</span>
                       </li>
                     )
                   })}

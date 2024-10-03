@@ -1,14 +1,35 @@
+"use client"
+import { useState } from "react";
 import Photo from "@/components/Photo";
 import Social from "@/components/Social";
-import { Button} from "@/components/ui/button";
-import {FiDownload} from "react-icons/fi";
+import { Button } from "@/components/ui/button";
+import { FiDownload, FiChevronDown } from "react-icons/fi";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Home() {
+  const [language, setLanguage] = useState("English");
+
+  const cvOptions = {
+    English: {
+      href: "/assets/ResumeSantiagoRiera-FullstackDev.pdf",
+      filename: "CV Santiago Riera - Fullstack Dev (EN).pdf"
+    },
+    Spanish: {
+      href: "/assets/CVSantiagoRiera-FullstackDev.pdf",
+      filename: "CV Santiago Riera - Fullstack Dev (ES).pdf"
+    }
+  };
+
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
-          {/*text*/}
+          {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
             <span className="text-xl">Software developer</span>
             <h1 className="h1 mb-6">
@@ -19,27 +40,42 @@ export default function Home() {
               which allows me to combine academic knowledge with hands-on professional practice. 
               I specialize in JavaScript and frameworks like React and Next.js to build scalable 
               and efficient solutions. 
-             
             </p>
-          
 
-            {/*btn and socials*/}
+            {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant="outline"
-                size="lg"
-                className="uppercase flex items-center gap-2 border-accent-default"
-                asChild
-              >
-                <a 
-                  href="/assets/CVSantiagoRiera-FullstackDev.pdf" 
-                  download="CV Santiago Riera - Fullstack Dev.pdf"
-                  className=""
-                >
-                  <span>Download CV</span>
-                  <FiDownload className="text-xl"/>
-                </a>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="uppercase flex items-center gap-2 border-accent-default"
+                  >
+                    <span>Download CV ({language})</span>
+                    <FiChevronDown className="text-xl"/>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem onClick={() => setLanguage("English")}>
+                    <a 
+                      href={cvOptions.English.href}
+                      download={cvOptions.English.filename}
+                      className="flex items-center gap-2"
+                    >
+                      <FiDownload /> English CV
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setLanguage("Spanish")}>
+                    <a 
+                      href={cvOptions.Spanish.href}
+                      download={cvOptions.Spanish.filename}
+                      className="flex items-center gap-2"
+                    >
+                      <FiDownload /> Spanish CV
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               <div className="mb-8 xl:mb-0">
                 <Social 
                   containerStyles="flex gap-6"
@@ -50,7 +86,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/*Photo*/}
+          {/* Photo */}
           <div className="order-1 xl:order-none mb-8 xl:mb-0">
             <Photo />
           </div>

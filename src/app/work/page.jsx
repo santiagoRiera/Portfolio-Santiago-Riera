@@ -65,7 +65,7 @@ function Work() {
             <div className="flex flex-col gap-[30px] h-[50%]">
 
               {/* outline num */}
-              <div className="text-8xl leading-none font-extrabold  text-shadow-outline">
+              <div className="text-8xl leading-none font-extrabold">
                 {project.num}
               </div>
               
@@ -77,7 +77,7 @@ function Work() {
               </h2>
 
               {/* project description */}
-              <p className="text-white/60">{project.description}</p>
+              <p className="text-white/80">{project.description}</p>
 
               {/* project stack */}
               <ul className="flex gap-4">
