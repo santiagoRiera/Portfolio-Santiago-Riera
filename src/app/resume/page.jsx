@@ -5,7 +5,8 @@ import { TbSql } from "react-icons/tb";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
 import {Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import {motion} from "framer-motion"
+import {motion, AnimatePresence} from "framer-motion"
+import { useState, useRef, useEffect } from "react"
 
 
 //About data
@@ -26,16 +27,12 @@ const about = {
       fieldValue: "santilrier@gmail.com"
     },
     {
-      fieldName: "Nationality:",
-      fieldValue: "Argentina"
+      fieldName: "Recidence:",
+      fieldValue: "Cordoba, Arg."
     },
     {
       fieldName: "Languages:",
       fieldValue: "Spanish (native) English (B1)"
-    },
-    {
-      fieldName: "Freelance:",
-      fieldValue: "Available"
     },
   ]
 }
@@ -146,23 +143,85 @@ const skillsData = [
 ];
 
 
-const SkillCard = ({ skill }) => (
-  <li>
-    <TooltipProvider delayDuration={100}>
-      <Tooltip>
-        <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex flex-col justify-center items-center group p-4">
-          <div className="text-6xl group-hover:text-accent-hover transition-all duration-300">
-            {skill.icon}
-          </div>
-          <span className="mt-2 text-sm text-center text-white/80">{skill.title}</span>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p className="max-w-[200px] text-sm">{skill.description}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  </li>
-);
+const SkillCard = ({ skill }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [showInstruction, setShowInstruction] = useState(true);
+  const tooltipTimeoutRef = useRef(null);
+
+  const handleTooltipOpen = () => {
+    setShowTooltip(true);
+    setShowInstruction(false);
+    if (tooltipTimeoutRef.current) {
+      clearTimeout(tooltipTimeoutRef.current);
+    }
+    tooltipTimeoutRef.current = setTimeout(() => {
+      setShowTooltip(false);
+    }, 3000);
+  };
+
+  const handleTooltipClose = () => {
+    if (tooltipTimeoutRef.current) {
+      clearTimeout(tooltipTimeoutRef.current);
+    }
+    setShowTooltip(false);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (tooltipTimeoutRef.current) {
+        clearTimeout(tooltipTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <li className="relative">
+      <TooltipProvider>
+        <Tooltip open={showTooltip}>
+          <TooltipTrigger
+            onClick={handleTooltipOpen}
+            onMouseEnter={handleTooltipOpen}
+            onMouseLeave={handleTooltipClose}
+            className="w-full h-[150px] bg-[#232329] rounded-xl flex flex-col justify-center items-center group p-4"
+          >
+            <div className="text-6xl group-hover:text-accent-hover transition-all duration-300">
+              {skill.icon}
+            </div>
+            <span className="mt-2 text-sm text-center text-white/80">{skill.title}</span>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p className="max-w-[200px] text-sm">{skill.description}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+      <AnimatePresence>
+        {showInstruction && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute h-6 xl:text-nowrap top-0 left-0 right-0 bg-accent-default text-primary text-xs p-1 rounded-t-xl text-center instruction-message"
+          >
+            <span className="mobile-instruction">Tap for details</span>
+            <span className="desktop-instruction">Hover for more</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <style jsx>{`
+        @media (hover: hover) and (pointer: fine) {
+          .mobile-instruction {
+            display: none;
+          }
+        }
+        @media (hover: none) and (pointer: coarse) {
+          .desktop-instruction {
+            display: none;
+          }
+        }
+      `}</style>
+    </li>
+  );
+};
 
 function Resume() {
   return (
@@ -179,16 +238,34 @@ function Resume() {
       className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
     >
       <div className="container mx-auto">
-        <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-[60px]">
+        <Tabs defaultValue="about" className="flex flex-col xl:flex-row gap-[60px]">
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
+            <TabsTrigger value="about">About me</TabsTrigger>
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
-            <TabsTrigger value="about">About me</TabsTrigger>
           </TabsList>
 
           {/*Content*/}
           <div className="min-h-[70vh] w-full">
+            {/*about me*/}
+            <TabsContent value="about" className="w-full text-center xl:text-left">
+              <div className="flex flex-col gap-[30px]">
+                <h3 className="text-4xl font-bold">{about.title}</h3>
+                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{about.description}</p>
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6  gap-x-4 max-w-[620px] mx-auto xl:mx-0">
+                  {about.info.map((item, index) => {
+                    return (
+                      <li key={index} className="flex items-center justify-center xl:justify-start xl:items-start gap-3">
+                        <span className="text-accent-default">{item.fieldName}</span>
+                        <span className="text-md">{item.fieldValue}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            </TabsContent>
+
             {/*Experience*/}
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
@@ -200,7 +277,7 @@ function Resume() {
                        <li 
                        key={index} 
                        className="bg-[#232329] h-[183px] xl:h-[250px] py-6 px-10 rounded-xl flex flex-col
-                       justify-center items-center lg:items-start xl:justify-start gap-1"
+                       justify-center items-center xl:items-start xl:justify-start gap-1"
                      > 
                         <span className="text-accent-default">{item.duration}</span>
                         <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
@@ -247,7 +324,6 @@ function Resume() {
               </div>
             </TabsContent>
 
-
             {/*skills*/}
             <TabsContent value="skills" className="w-full h-full">
                 <div className="flex flex-col gap-[30px]">
@@ -266,24 +342,6 @@ function Resume() {
                 </div>
             </TabsContent>
 
-
-            {/*about me*/}
-            <TabsContent value="about" className="w-full text-center xl:text-left">
-              <div className="flex flex-col gap-[30px]">
-                <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{about.description}</p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6  gap-x-4 max-w-[620px] mx-auto xl:mx-0">
-                  {about.info.map((item, index) => {
-                    return (
-                      <li key={index} className="flex items-center justify-center xl:justify-start xl:items-start gap-3">
-                        <span className="text-white/70">{item.fieldName}</span>
-                        <span className="text-md">{item.fieldValue}</span>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            </TabsContent>
           </div>
         </Tabs>
       </div>

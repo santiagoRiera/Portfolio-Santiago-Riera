@@ -1,30 +1,8 @@
-"use client"
-import { useState } from "react";
 import Photo from "@/components/Photo";
 import Social from "@/components/Social";
-import { Button } from "@/components/ui/button";
-import { FiDownload, FiChevronDown } from "react-icons/fi";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import InteractiveCVDownload from "@/components/CVDownload";
 
 export default function Home() {
-  const [language, setLanguage] = useState("English");
-
-  const cvOptions = {
-    English: {
-      href: "/assets/ResumeSantiagoRiera-FullstackDev.pdf",
-      filename: "CV Santiago Riera - Fullstack Dev (EN).pdf"
-    },
-    Spanish: {
-      href: "/assets/CVSantiagoRiera-FullstackDev.pdf",
-      filename: "CV Santiago Riera - Fullstack Dev (ES).pdf"
-    }
-  };
-
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
@@ -44,38 +22,7 @@ export default function Home() {
 
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="uppercase flex items-center gap-2 border-accent-default"
-                  >
-                    <span>Download CV ({language})</span>
-                    <FiChevronDown className="text-xl"/>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem onClick={() => setLanguage("English")}>
-                    <a 
-                      href={cvOptions.English.href}
-                      download={cvOptions.English.filename}
-                      className="flex items-center gap-2"
-                    >
-                      <FiDownload /> English CV
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setLanguage("Spanish")}>
-                    <a 
-                      href={cvOptions.Spanish.href}
-                      download={cvOptions.Spanish.filename}
-                      className="flex items-center gap-2"
-                    >
-                      <FiDownload /> Spanish CV
-                    </a>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <InteractiveCVDownload />
               <div className="mb-8 xl:mb-0">
                 <Social 
                   containerStyles="flex gap-6"

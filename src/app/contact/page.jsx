@@ -22,16 +22,12 @@ const info = [
     description: "santilrier@gmail.com"
   },
   {
-    icon: <FaMapMarkerAlt />,
-    title: "Address",
-    description: "Cordoba, Argentina"
-  },
-  {
     icon: <FaLinkedin />,
     title: "Linkedin",
     description: "santi-riera",
     link: "https://www.linkedin.com/in/santi-riera/"
-  }
+  },
+  
 ]
 
 
