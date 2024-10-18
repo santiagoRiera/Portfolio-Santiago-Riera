@@ -1,6 +1,6 @@
 "use client"
 import { FaHtml5, FaCss3, FaJs, FaReact } from "react-icons/fa"
-import {SiTailwindcss, SiNextdotjs, SiExpress} from "react-icons/si"
+import {SiTailwindcss, SiNextdotjs, SiExpress, SiTypescript} from "react-icons/si"
 import { TbSql } from "react-icons/tb";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
 import {Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip"
@@ -130,9 +130,15 @@ const skillsData = [
   },
   {
     title: "Express.js",
-    description: "Proficient in developing RESTful APIs and backend services using Node.js and Express for scalable and performant applications.",
+    description: "Basic knowlede in developing RESTful APIs and backend services using Node.js and Express for scalable and performant applications.",
     icon: <SiExpress />,
     name: "Express.js"
+  },
+  {
+    title: "TypeScript.js",
+    description: "I have a basic understanding of TypeScript and its use for adding static types to JavaScript, improving code reliability.",
+    icon: <SiTypescript />,
+    name: "TypeScript.js"
   },
   {
     title: "SQL",

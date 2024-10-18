@@ -12,13 +12,13 @@ import WorkSliderBtns from "@/components/WorkSliderBtns"
 const projects = [
   {
     num: "01",
-    category: "Frontend",
-    title: "Project 1",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec ultricies.",
-    stack: [{name: "React"}, {name: "Tailwind"}, {name: "Framer Motion"}],
-    image: "/assets/work/thumb1.png",
-    live: "",
-    github: ""
+    category: "Fullstack E-Commerce",
+    title: "CaseCobra by Santi",
+    description: "Create your own custom phone case with any image you want. Stripe payment integration. User authentication with Kind Auth. Admin dashboard to manage orders and products.",
+    stack: [{name: "Next.js"}, {name: "TypeScript"}, {name: "Tailwind"}, {name: "Postgres"}],
+    image: "/assets/photos/casecobra.png",
+    live: "https://casecobra-santi.vercel.app/",
+    github: "https://github.com/santiagoRiera/casecobra"
   },
   {
     num: "02",
@@ -83,9 +83,9 @@ function Work() {
               <ul className="flex gap-4">
                   {project.stack.map((item, index) => {
                     return (
-                      <li key={index} className="text-xl text-accent-default">
+                      <li key={index} className="grid text-xl text-accent-default">
                         {item.name}
-                        {index != project.stack.length - 1 && "," }
+                        {index != project.stack.length - 1 }
                       </li>
                     )
                   })}
@@ -98,7 +98,7 @@ function Work() {
               <div className="flex items-center gap-4 ">
 
                 {/* live project button */}
-                <Link href={project.live}>
+                <Link href={project.live} target="_blank" rel="noopener noreferrer">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex
@@ -114,7 +114,7 @@ function Work() {
                 </Link>
 
                 {/* github project button */}
-                <Link href={project.github}>
+                <Link href={project.github} target="_blank" rel="noopener noreferrer">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex
@@ -141,23 +141,38 @@ function Work() {
             >
               {projects.map((project, index) => {
                 return (
+                  
                   <SwiperSlide key={index} className="w-full">
-                    <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                    <div className="h-[400px] relative group flex justify-center items-center bg-pink-50/20">
                       {/* overlay */}
                       <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
                       
                       {/* image */}
-                      <div className="relative w-full h-full">
+                      <div className="relative w-full h-[400px]">
+                      
                         <Image 
                           src={project.image} 
                           fill 
-                          className="object-cover" 
-                          alt="" 
-                          sizes="(max-width: 768px) 100vw, max-width: 1200px) 50vw,  33vw"
+                          className="object-contain" 
+                          alt="casecobra main page" 
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw,  33vw"
                         />
+                        
                       </div>
+
+                      {/* clickable overlay */}
+                      <a 
+                        href={project.live}
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="absolute top-0 left-0 w-full h-full z-20"
+                        onClick={(e) => e.stopPropagation()} // Prevent Swiper from capturing the click
+                      >
+                        <span className="sr-only">View project</span>
+                      </a>
                     </div>
                   </SwiperSlide>
+                  
                 )
               })}
 
