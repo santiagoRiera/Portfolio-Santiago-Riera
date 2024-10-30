@@ -14,7 +14,7 @@ const projects = [
     num: "01",
     category: "Fullstack E-Commerce",
     title: "CaseCobra by Santi",
-    description: "Create your own custom phone case with any image you want. Stripe payment integration. User authentication with Kind Auth. Admin dashboard to manage orders and products.",
+    description: "Create your own custom phone case with your own images. Stripe payment integration. User authentication with Kinde Auth. Admin dashboard to manage orders and products.",
     stack: [{name: "Next.js"}, {name: "TypeScript"}, {name: "Tailwind"}, {name: "Postgres"}],
     image: "/assets/photos/casecobra.png",
     live: "https://casecobra-santi.vercel.app/",
@@ -22,13 +22,13 @@ const projects = [
   },
   {
     num: "02",
-    category: "Fullstack",
-    title: "Project 2",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec ultricies.",
-    stack: [{name: "Html 5"}, {name: "Css 3"}, {name: "Javascript"}],
-    image: "/assets/work/thumb2.png",
-    live: "",
-    github: ""
+    category: "Fullstack Marketplace",
+    title: "DigitalHippo",
+    description: "Marketplace for digital products. You can buy or upload and sell your products. Backend implemantation with Payload cms. Stripe payment integration. Admin dashboard to manage orders and products.",
+    stack: [{name: "Next.js"}, {name: "Typescript"}, {name: "Tailwind"}, {name: "Express"}, {name:"TRPC"}, {name: "MongoDB"}],
+    image: "/assets/photos/digitalhippo.png",
+    live: "https://digitalhippo-santi.up.railway.app/",
+    github: "https://github.com/santiagoRiera/digitalHippo"
   },
   {
     num: "03",
@@ -80,10 +80,10 @@ function Work() {
               <p className="text-white/80">{project.description}</p>
 
               {/* project stack */}
-              <ul className="flex gap-4">
+              <ul className="grid grid-cols-3 gap-4">
                   {project.stack.map((item, index) => {
                     return (
-                      <li key={index} className="grid text-xl text-accent-default">
+                      <li key={index} className="text-xl text-accent-default">
                         {item.name}
                         {index != project.stack.length - 1 }
                       </li>
