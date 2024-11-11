@@ -74,7 +74,7 @@ function Work() {
               <h2 className="text-[42px] font-bold leading-none text-white goup-hover:text-accent
                 transition-all duration-500 capitalize"
               >
-                {project.category} project
+                {project.category}
               </h2>
 
               {/* project description */}
