@@ -12,7 +12,7 @@ import { useState, useRef, useEffect } from "react"
 //About data
 const about = {
   title: "About me",
-  description: "I'm a software developer with experience in web development. I have worked with technologies like HTML, CSS, JavaScript, React, TailwindCSS, and Next.js. I'm passionate about learning new technologies and improving my skills.  I'm always seeking new challenges and opportunities to learn emerging technologies and apply my knowledge to solve problems. My passion lies in creating intuitive and optimized user experiences.",
+  description: "I'm a software developer with experience in web development. I have worked with technologies like HTML, CSS, JavaScript, React, TailwindCSS, and Next.js. I'm passionate about learning new technologies and improving my skills.  I'm a flexible person with good communication and teamwork skills, always eager to learn. I adapt quickly to changes and pick up new skills easily.",
   info: [
     {
       fieldName: "Name:",
@@ -55,7 +55,7 @@ const experience = {
 const education = {
   icon: '/assets/resume/cap.svg',
   title: "Education",
-  description: "I'm a student of Systems Engineering at the Universidad Tecnológica Nacional (Córdoba), where I am developing a strong foundation in programming, and software development principles, including system design.  Additionally, I have taken various online courses in web development and programming to enhance my skills. Some of these courses include:",
+  description: "I'm a student of Software Engineering at the Universidad Tecnológica Nacional (Córdoba), where I am developing a strong foundation in programming, and software development principles.  Additionally, I have taken various online courses in web development and programming to enhance my skills. Some of these courses include:",
   items: [
     {
       institution: "Universidad Tecnologica Nacional",

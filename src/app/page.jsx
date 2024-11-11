@@ -14,10 +14,9 @@ export default function Home() {
               Hello I'm <br /><span className="text-accent-default">Santiago Riera</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I'm a full-stack developer and I'm currently pursuing a degree in Systems Engineering, 
-              which allows me to combine academic knowledge with hands-on professional practice. 
+              I'm a full-stack developer and I'm currently halfway through my degree in Systems Engineering. 
               I specialize in JavaScript and frameworks like React and Next.js to build scalable 
-              and efficient solutions. 
+              and efficient solutions, but I'm studying to improve both my front and backend skills.
             </p>
 
             {/* btn and socials */}

@@ -12,34 +12,35 @@ import WorkSliderBtns from "@/components/WorkSliderBtns"
 const projects = [
   {
     num: "01",
+    category: "SaaS - Fullstack Application",
+    title: "PingPanda",
+    description: "Pingpanda is a SaaS that allows you to receive real-time notifications via Discord when an event happens in your application. Authentication with Clerk Auth. Payments integrated with Stripe.",
+    stack: [{name: "Typescript"}, {name: "Tailwind"}, {name: "Next.js"}, {name: "Hono.js"}, {name: "Postgres"}],
+    image: "/assets/photos/pingpandaImage.png",
+    live: "https://pingpanda-santi.vercel.app/",
+    github: "https://github.com/santiagoRiera/pingpanda"
+  },
+  {
+    num: "02",
     category: "Fullstack E-Commerce",
     title: "CaseCobra by Santi",
     description: "Create your own custom phone case with your own images. Stripe payment integration. User authentication with Kinde Auth. Admin dashboard to manage orders and products.",
-    stack: [{name: "Next.js"}, {name: "TypeScript"}, {name: "Tailwind"}, {name: "Postgres"}],
+    stack: [{name: "Next.js"}, {name: "React"}, {name: "TypeScript"}, {name: "Tailwind"}, {name: "Postgres"}],
     image: "/assets/photos/casecobra.png",
     live: "https://casecobra-santi.vercel.app/",
     github: "https://github.com/santiagoRiera/casecobra"
   },
   {
-    num: "02",
+    num: "03",
     category: "Fullstack Marketplace",
     title: "DigitalHippo",
     description: "Marketplace for digital products. You can buy or upload and sell your products. Backend implemantation with Payload cms. Stripe payment integration. Admin dashboard to manage orders and products.",
-    stack: [{name: "Next.js"}, {name: "Typescript"}, {name: "Tailwind"}, {name: "Express"}, {name:"TRPC"}, {name: "MongoDB"}],
+    stack: [{name: "Next.js"}, {name: "React"}, {name: "Typescript"}, {name: "Tailwind"}, {name: "Express"}, {name:"TRPC"}, {name: "MongoDB"}],
     image: "/assets/photos/digitalhippo.png",
     live: "https://digitalhippo-santi.up.railway.app/",
     github: "https://github.com/santiagoRiera/digitalHippo"
   },
-  {
-    num: "03",
-    category: "Frontend",
-    title: "Project 3",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec ultricies.",
-    stack: [{name: "Html 5"}, {name: "Css 3"}, {name: "Javascript"}],
-    image: "/assets/work/thumb3.png",
-    live: "",
-    github: ""
-  }
+  
 ]
 
 function Work() {
