@@ -253,7 +253,7 @@ function Resume() {
           </TabsList>
 
           {/*Content*/}
-          <div className="min-h-[70vh] w-full">
+          <div className="min-h-[70vh] w-full px-3">
             {/*about me*/}
             <TabsContent value="about" className="w-full text-center xl:text-left">
               <div className="flex flex-col gap-[30px]">

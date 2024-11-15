@@ -63,7 +63,7 @@ function Work() {
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between 
           order-2 xl:order-none">
-            <div className="flex flex-col gap-[30px] h-[50%]">
+            <div className="flex flex-col gap-[30px] h-[50%] px-3">
 
               {/* outline num */}
               <div className="text-8xl leading-none font-extrabold">
@@ -149,14 +149,15 @@ function Work() {
                       <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
                       
                       {/* image */}
-                      <div className="relative w-full h-[400px]">
+                      <div className="relative w-full h-[350px]">
                       
                         <Image 
                           src={project.image} 
                           fill 
-                          className="object-contain" 
+                          objectFit="cover"
+                          className="w-full h-full" 
                           alt="casecobra main page" 
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw,  33vw"
+                          sizes=""
                         />
                         
                       </div>

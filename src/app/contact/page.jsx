@@ -84,7 +84,7 @@ function Contact() {
       }}
       className="py-6"
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto px-3">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* Form */}
           <div className="xl:w-[64%] order-2 xl:order-none">
@@ -119,7 +119,7 @@ function Contact() {
               <Textarea name="message" placeholder="Type your message here" className="h-[200px]" onChange={handleChange} value={formData.message} required />
 
               {/* Button */}
-              <Button size="md" className="max-w-40" type="submit">Send message</Button>
+              <Button size="md" className="mx-auto max-w-60 " type="submit">Send message</Button>
             </form>
           </div>
 
