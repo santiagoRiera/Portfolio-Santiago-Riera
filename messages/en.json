@@ -1,0 +1,187 @@
+{
+  "Homepage": {
+    "description": "I'm a full-stack developer and I'm currently halfway through my degree in Systems Engineering. I specialize in JavaScript and frameworks like React and Next.js to build scalable and efficient solutions, but I'm studying to improve both my front and backend skills.",
+    "title": "Fullstack web developer",
+    "hello": "Hello I'm",
+    "name": "Santiago Riera"
+  },
+  "Work": {
+    "projects": {
+      "PingPanda": {
+        "category": "SaaS - Fullstack Application",
+        "description": "Pingpanda is a SaaS that allows you to receive real-time notifications via Discord when an event happens in your application. Authentication with Clerk Auth. Payments integrated with Stripe."
+      },
+      "CaseCobra":{
+        "category": "Fullstack E-Commerce",
+        "description": "Create your own custom phone case with your own images. Stripe payment integration. User authentication with Kinde Auth. Admin dashboard to manage orders and products."
+      },
+      "DigitalHippo":{
+        "category": "Fullstack Marketplace",
+        "description": "Marketplace for digital products. You can buy or upload and sell your products. Backend implementation with Payload CMS. Stripe payment integration. Admin dashboard to manage orders and products."
+      }
+    }
+  },
+  "Resume": {
+    "about": {
+      "title": "About Me",
+      "description": "I am a software developer with experience in web development. I have worked with technologies such as HTML, CSS, JavaScript, React, TailwindCSS, and Next.js. I am passionate about learning new technologies and improving my skills. I am a flexible person with good communication and teamwork skills, always willing to learn. I quickly adapt to changes and easily acquire new skills.",
+      "info": {
+        "name": {
+          "title": "Name",
+          "description": "Santiago Riera"
+        },
+        "phone": {
+          "title": "Phone",
+          "description": "+54 3515529191"
+        },
+        "email": {
+          "title": "Email",
+          "description": "santilrier@gmail.com"
+        },
+        "residence": {
+          "title": "Residence",
+          "description": "Córdoba, Arg"
+        },
+        "languages": {
+          "title": "Languages",
+          "description": "Spanish (native), English (B2)"
+        }
+      }
+    },
+    "experience": {
+      "title": "Experience",
+      "description": "I worked for a year at a local company, starting with a training period that helped me develop my skills. Once I joined my role, I focused on updating React components to improve functionality and user experience. Additionally, I built websites using WordPress, applying my web development knowledge. This experience was invaluable in helping me refine my technical skills and learn how to effectively collaborate with a team on various projects.",
+      "items": {
+        "position": "Web Developer",
+        "duration": "2021-2022 (1 year)"
+      }
+    },
+    "education": {
+      "title": "Education",
+      "description": "I am a student of Systems Engineering at the National Technological University (Córdoba), where I am developing a solid foundation in programming and software development principles. Additionally, I have taken several online courses in web development and programming to enhance my skills. Some of these courses include:",
+      "courses": {
+        "utn": {
+          "institution": "National Technological University",
+          "degree": "Systems Engineering",
+          "duration": "2021 - Present"
+        },
+        "auto": {
+          "institution": "Self-learning",
+          "degree": "Next.js, TypeScript, and TailwindCSS",
+          "duration": "2024"
+        },
+        "coderhouse": {
+          "institution": "Coderhouse",
+          "degree": "React.js course",
+          "duration": "2022"
+        },
+        "platzi": {
+          "institution": "Platzi",
+          "degree": "Practical JavaScript",
+          "duration": "2022"
+        },
+        "platzi2": {
+          "institution": "Platzi",
+          "degree": "React.js",
+          "duration": "2022"
+        },
+        "platzi3": {
+          "institution": "Platzi",
+          "degree": "Frontend Developer",
+          "duration": "2022"
+        }
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "description": "In addition to my technical skills, I possess interpersonal abilities that enhance my teamwork. I excel at effective communication, enabling me to clearly express ideas and facilitate collaboration with colleagues and clients. I approach challenges with an analytical mindset, seeking creative and efficient solutions, and quickly adapt to new situations and feedback. I value collaboration and the contributions of others, fostering a positive and productive environment. These are my main technical skills and areas of expertise:",
+      "skillsData": {
+        "html": {
+          "description": "Proficient in writing semantic HTML5, ensuring accessibility and SEO-friendly structure."
+        },
+        "css": {
+          "description": "Skilled in modern CSS3 techniques, including Flexbox and Grid for responsive layouts."
+        },
+        "javascript": {
+          "description": "Proficient in writing clean, modular, and maintainable JavaScript code."
+        },
+        "react": {
+          "description": "Experienced in building dynamic single-page applications (SPAs) using React, including hooks, context, and component-based architecture."
+        },
+        "nextjs": {
+          "description": "Expertise in server-side rendering (SSR) and building scalable, performant web applications with Next.js."
+        },
+        "tailwind": {
+          "description": "Skilled in creating highly responsive, custom designs quickly with Tailwind's utility-first CSS framework."
+        },
+        "express": {
+          "description": "Basic knowledge in developing RESTful APIs and backend services using Node.js and Express for scalable and performant applications."
+        },
+        "typescript": {
+          "description": "Basic understanding of TypeScript and its use for adding static types to JavaScript, improving code reliability."
+        },
+        "sql": {
+          "description": "Knowledge in working with relational databases (SQL) for data management and storage."
+        },
+        "postgresql": {
+          "description": "Basic knowledge in working with PostgreSQL for data management and storage using Neon Serverless Postrges."
+        }
+      },
+      "interaction": {
+        "tap": "Tap for details",
+        "hover": "Hover for more"
+      }
+    }
+  },
+  "Contact": {
+    "title": "Let's Work Together",
+    "subtitle": "Whether you're interested in my profile, have a project in mind, or just want to chat, I'm here to help. Let's connect!",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "service": {
+        "label": "Select a Service"
+      },
+      "message": "Type your message here",
+      "submit": "Send Message",
+      "error": "Please fill out this field"
+    },
+    "alert": {
+      "success": {
+        "title": "Success",
+        "message": "Message sent successfully!"
+      },
+      "error": {
+        "title": "Error",
+        "message": "Failed to send the message."
+      }
+    },
+    "info": {
+      "phone": {
+        "title": "Phone"
+      },
+      "email": {
+        "title": "Email"
+      },
+      "linkedin": {
+        "title": "LinkedIn"
+      }
+    }
+  },
+  "DownloadCV": {
+    "title": "Download CV",
+    "language": "(ENGLISH)",
+    "esMessage": "Spanish CV",
+    "enMessage": "English CV"
+  },
+  "Navbar": {
+    "home": "Home",
+    "work": "Work",
+    "resume": "Resume",
+    "contact": "Contact"
+  }
+}
+
+  

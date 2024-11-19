@@ -1,22 +1,25 @@
-import Photo from "@/components/Photo";
-import Social from "@/components/Social";
-import InteractiveCVDownload from "@/components/CVDownload";
+import Photo from "../../components/Photo";
+import Social from "../../components/Social";
+import InteractiveCVDownload from "../../components/CVDownload";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations("Homepage");
+
   return (
     <section className="h-full px-3">
       <div className="container mx-auto h-full">
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl">Software developer</span>
+            <span className="text-xl">{t("title")}</span>
             <h1 className="h1 mb-6">
-              Hello I'm <br /><span className="text-accent-default">Santiago Riera</span>
+              {t("hello")} 
+              <br/>
+              <span className="text-accent-default">{t("name")}</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I'm a full-stack developer and I'm currently halfway through my degree in Systems Engineering. 
-              I specialize in JavaScript and frameworks like React and Next.js to build scalable 
-              and efficient solutions, but I'm studying to improve both my front and backend skills.
+              {t("description")}
             </p>
 
             {/* btn and socials */}
@@ -27,7 +30,7 @@ export default function Home() {
                   containerStyles="flex gap-6"
                   iconStyles="w-9 h-9 border border-accent-default rounded-full flex items-center 
                   justify-center text-base text-accent-default hover:bg-accent-default hover:text-primary
-                  hover:transition-all duaration-500"
+                  hover:transition-all duration-500"
                 />
               </div>
             </div>

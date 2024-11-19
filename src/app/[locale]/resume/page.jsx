@@ -1,51 +1,25 @@
 "use client"
 import { FaHtml5, FaCss3, FaJs, FaReact } from "react-icons/fa"
-import {SiTailwindcss, SiNextdotjs, SiExpress, SiTypescript} from "react-icons/si"
+import {SiTailwindcss, SiNextdotjs, SiExpress, SiTypescript, SiPostgresql} from "react-icons/si"
 import { TbSql } from "react-icons/tb";
-import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
-import {Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "../../../components/ui/tabs"
+import {Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "../../../components/ui/tooltip"
+import { ScrollArea } from "../../../components/ui/scroll-area"
 import {motion, AnimatePresence} from "framer-motion"
 import { useState, useRef, useEffect } from "react"
-
+import { useTranslations } from "next-intl";
 
 //About data
 const about = {
-  title: "About me",
-  description: "I'm a software developer with experience in web development. I have worked with technologies like HTML, CSS, JavaScript, React, TailwindCSS, and Next.js. I'm passionate about learning new technologies and improving my skills.  I'm a flexible person with good communication and teamwork skills, always eager to learn. I adapt quickly to changes and pick up new skills easily.",
-  info: [
-    {
-      fieldName: "Name:",
-      fieldValue: "Santiago Riera"
-    },
-    {
-      fieldName: "Phone:",
-      fieldValue: "(+54) 3515529191"
-    },
-    {
-      fieldName: "Email:",
-      fieldValue: "santilrier@gmail.com"
-    },
-    {
-      fieldName: "Recidence:",
-      fieldValue: "Cordoba, Arg."
-    },
-    {
-      fieldName: "Languages:",
-      fieldValue: "Spanish (native) English (B1)"
-    },
-  ]
+  info: ["name", "phone", "email", "residence", "languages"]
 }
 
 //Experience data
 const experience = {
   icon: '/assets/resume/badge.svg',
-  title: "Experience",
-  description: "I worked for a year at a local company, starting with a training period that helped me develop my skills. Once I transitioned into my role, I focused on making updates to React components to enhance functionality and improve user experience. Additionally, I built websites using WordPress, which allowed me to apply my knowledge of web development. This experience was invaluable in helping me refine my technical skills and learn how to collaborate effectively with a team on various projects.",
   items: [
     {
       company: "Grupo WG",
-      position: "Web developer",
       duration: "2021-2022 (1 year)",
     }
   ]
@@ -54,102 +28,67 @@ const experience = {
 //Education data
 const education = {
   icon: '/assets/resume/cap.svg',
-  title: "Education",
-  description: "I'm a student of Software Engineering at the Universidad Tecnológica Nacional (Córdoba), where I am developing a strong foundation in programming, and software development principles.  Additionally, I have taken various online courses in web development and programming to enhance my skills. Some of these courses include:",
-  items: [
-    {
-      institution: "Universidad Tecnologica Nacional",
-      degree: "Systems Engineering",
-      duration: "2021 - Present",
-    },
-    {
-      institution: "Self-taught", 
-      degree: "Next.js and TailwindCSS",
-      duration: "2024",
-    },
-    {
-      institution: "Coderhouse",
-      degree: "React.js course",
-      duration: "2022",
-    },
-    {
-      institution: "Platzi",
-      degree: "Javascript practico",
-      duration: "2022",
-    },
-    {
-      institution: "Platzi",
-      degree: "React.js",
-      duration: "2022",
-    },
-    {
-      institution: "Platzi",
-      degree: "Frontend developer",
-      duration: "2022",
-    },
-  ]
+  items: ['utn', 'auto', 'coderhouse', 'platzi', 'platzi2', 'platzi3']
 }
 
 //Skills data
 const skillsData = [
   {
     title: "HTML5",
-    description: "Proficient in writing semantic HTML5 markup, ensuring accessibility and SEO-friendly structure.",
     icon: <FaHtml5 />,
-    name: "HTML5"
+    name: "html" // Clave que coincide con las traducciones
   },
   {
     title: "CSS3",
-    description: "Proficient in modern CSS3 techniques including Flexbox and Grid for responsive layouts.",
     icon: <FaCss3 />,
-    name: "CSS3"
+    name: "css"
   },
   {
     title: "JavaScript",
-    description: "Proficient in writing clean, modular, and maintainable JavaScript code.",
     icon: <FaJs />,
-    name: "JavaScript"
+    name: "javascript"
+  },
+  {
+    title: "TypeScript",
+    icon: <SiTypescript />,
+    name: "typescript"
   },
   {
     title: "React",
-    description: "Experienced in building dynamic single-page applications (SPAs) using React, including hooks, context, and component-based architecture.",
     icon: <FaReact />,
-    name: "React.js"
+    name: "react"
   },
   {
     title: "Next.js",
-    description: "Expertise in server-side rendering (SSR), and building scalable, performant web applications with Next.js.",
     icon: <SiNextdotjs />,
-    name: "Next.js"
+    name: "nextjs"
   },
   {
     title: "Tailwind CSS",
-    description: "Skilled in creating highly responsive, custom designs quickly with Tailwind's utility-first CSS framework.",
     icon: <SiTailwindcss />,
-    name: "TailwindCSS"
+    name: "tailwind"
   },
   {
     title: "Express.js",
-    description: "Basic knowlede in developing RESTful APIs and backend services using Node.js and Express for scalable and performant applications.",
     icon: <SiExpress />,
-    name: "Express.js"
-  },
-  {
-    title: "TypeScript.js",
-    description: "I have a basic understanding of TypeScript and its use for adding static types to JavaScript, improving code reliability.",
-    icon: <SiTypescript />,
-    name: "TypeScript.js"
+    name: "express"
   },
   {
     title: "SQL",
-    description: "Knowledge in working with relational databases (SQL) for data management and storage.",
     icon: <TbSql />,
-    name: "SQL"
+    name: "sql"
+  },
+  {
+    title: "PostgreSQL",
+    icon: <SiPostgresql />,
+    name: "postgresql"
   }
 ];
 
 
-const SkillCard = ({ skill }) => {
+
+const SkillCard = ({skill }) => {
+  const t = useTranslations('Resume')
   const [showTooltip, setShowTooltip] = useState(false);
   const [showInstruction, setShowInstruction] = useState(true);
   const tooltipTimeoutRef = useRef(null);
@@ -196,7 +135,8 @@ const SkillCard = ({ skill }) => {
             <span className="mt-2 text-sm text-center text-white/80">{skill.title}</span>
           </TooltipTrigger>
           <TooltipContent>
-            <p className="max-w-[200px] text-sm">{skill.description}</p>
+            <p className="max-w-[200px] text-sm">{t(`skills.skillsData.${skill.name}.description`)}</p>
+            <p className="max-w-[200px] text-sm"></p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
@@ -208,8 +148,8 @@ const SkillCard = ({ skill }) => {
             exit={{ opacity: 0, y: -10 }}
             className="absolute h-6 xl:text-nowrap top-0 left-0 right-0 bg-accent-default text-primary text-xs p-1 rounded-t-xl text-center instruction-message"
           >
-            <span className="mobile-instruction">Tap for details</span>
-            <span className="desktop-instruction">Hover for more</span>
+            <span className="mobile-instruction">{t('skills.interaction.tap')}</span>
+            <span className="desktop-instruction">{t('skills.interaction.hover')}</span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -230,6 +170,8 @@ const SkillCard = ({ skill }) => {
 };
 
 function Resume() {
+  const t = useTranslations('Resume')
+  
   return (
     <motion.div
       initial={{opacity:0}}
@@ -246,10 +188,10 @@ function Resume() {
       <div className="container mx-auto">
         <Tabs defaultValue="about" className="flex flex-col xl:flex-row gap-[60px]">
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
-            <TabsTrigger value="about">About me</TabsTrigger>
-            <TabsTrigger value="experience">Experience</TabsTrigger>
-            <TabsTrigger value="education">Education</TabsTrigger>
-            <TabsTrigger value="skills">Skills</TabsTrigger>
+            <TabsTrigger value="about">{t('about.title')}</TabsTrigger>
+            <TabsTrigger value="experience">{t('experience.title')}</TabsTrigger>
+            <TabsTrigger value="education">{t('education.title')}</TabsTrigger>
+            <TabsTrigger value="skills">{t('skills.title')}</TabsTrigger>
           </TabsList>
 
           {/*Content*/}
@@ -257,14 +199,14 @@ function Resume() {
             {/*about me*/}
             <TabsContent value="about" className="w-full text-center xl:text-left">
               <div className="flex flex-col gap-[30px]">
-                <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{about.description}</p>
+                <h3 className="text-4xl font-bold">{t('about.title')}</h3>
+                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{t('about.description')}</p>
                 <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6  gap-x-4 max-w-[620px] mx-auto xl:mx-0">
-                  {about.info.map((item, index) => {
+                  {about.info.map((key, index) => {
                     return (
                       <li key={index} className="flex items-center justify-center xl:justify-start xl:items-start gap-3">
-                        <span className="text-accent-default">{item.fieldName}</span>
-                        <span className="text-md">{item.fieldValue}</span>
+                        <span className="text-accent-default">{t(`about.info.${key}.title`)}</span>
+                        <span className="text-md">{t(`about.info.${key}.description`)}</span>
                       </li>
                     )
                   })}
@@ -275,8 +217,8 @@ function Resume() {
             {/*Experience*/}
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{experience.description}</p>
+                <h3 className="text-4xl font-bold">{t('experience.title')}</h3>
+                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{t('experience.description')}</p>
                 <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 xl:grid-cols-2 gap-[30px]">
                     {experience.items.map((item, index) => (
@@ -285,14 +227,14 @@ function Resume() {
                        className="bg-[#232329] h-[183px] xl:h-[250px] py-6 px-10 rounded-xl flex flex-col
                        justify-center items-center xl:items-start xl:justify-start gap-1"
                      > 
-                        <span className="text-accent-default">{item.duration}</span>
+                        <span className="text-accent-default">{t('experience.items.position')}</span>
                         <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
                           {item.company}
                         </h3>
                         <div className="flex items-center gap-3">
                           {/* Dot */ }
                           <span className="w-[6px] h-[6px] rounded-full bg-accent-default"></span>
-                          <p className="text-white/80">{item.position}</p>
+                          <p className="text-white/80">{t('experience.items.duration')}</p>
                         </div>
                       </li>
                     ))}
@@ -304,24 +246,24 @@ function Resume() {
             {/*education*/}
             <TabsContent value="education" className="w-full">
             <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{education.description}</p>
+                <h3 className="text-4xl font-bold">{t('education.title')}</h3>
+                <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0">{t('education.description')}</p>
                 <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-                    {education.items.map((item, index) => (
+                    {education.items.map((key, index) => (
                       <li 
                         key={index} 
                         className="bg-[#232329] h-[183px] xl:h-[250px] py-6 px-10 rounded-xl flex flex-col
                         justify-center items-center lg:items-start xl:justify-start gap-1"
                       > 
-                        <span className="text-accent-default">{item.duration}</span>
+                        <span className="text-accent-default">{t(`education.courses.${key}.duration`)}</span>
                         <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
-                          {item.degree}
+                        {t(`education.courses.${key}.degree`)}
                         </h3>
                         <div className="flex items-center gap-3">
                           {/* Dot */ }
                           <span className="w-[6px] h-[6px] rounded-full bg-accent-default"></span>
-                          <p className="text-white/80 w-full">{item.institution}</p>
+                          <p className="text-white/80 w-full">{t(`education.courses.${key}.institution`)} </p>
                         </div>
                       </li>
                     ))}
@@ -334,10 +276,9 @@ function Resume() {
             <TabsContent value="skills" className="w-full h-full">
                 <div className="flex flex-col gap-[30px]">
                   <div className="text-center xl:text-left">
-                    <h3 className="text-4xl font-bold mb-4">Skills</h3>
+                    <h3 className="text-4xl font-bold mb-4">{t('skills.title')}</h3>
                     <p className="max-w-[600px] text-white/80 mx-auto xl:mx-0 mb-8">
-                      In addition to my technical skills, I possess interpersonal competencies that enhance my teamwork. I excel in effective communication, allowing me to express my ideas clearly and facilitate collaboration with colleagues and clients. I approach challenges with an analytical mindset, seeking creative and efficient solutions, and I quickly adapt to new situations and feedback. I value collaboration and the contributions of others, fostering a positive and productive environment.
-                      Here are my key technical skills and areas of expertise:
+                      {t('skills.description')}
                     </p>
                   </div>
                   <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">

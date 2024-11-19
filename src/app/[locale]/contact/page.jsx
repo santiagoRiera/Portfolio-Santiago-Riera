@@ -1,20 +1,21 @@
 "use client"
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Button } from "../../../components/ui/button";
+import { Input } from "../../../components/ui/input";
+import { Textarea } from "../../../components/ui/textarea";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../../../components/ui/select";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from 'next/link';
 import emailjs from 'emailjs-com';
-import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
+import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '../../../components/ui/alert-dialog';
+import { useTranslations } from "next-intl";
 
 const info = [
   {
     icon: <FaPhoneAlt />,
     title: "Phone",
-    description: "(+54) 3515529191"
+    description: "+54 3515529191"
   },
   {
     icon: <FaEnvelope />,
@@ -32,6 +33,7 @@ const info = [
 
 
 function Contact() {
+  const t = useTranslations('Contact');
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -62,14 +64,14 @@ function Contact() {
       '8JpSuMlLC_Yp6K9cV'
     ).then(
       (result) => {
-        setAlertMessage('Message sent successfully!');
-        setAlertType('success');
+        setAlertMessage(t(`alert.success.message`));
+        setAlertType(t(`alert.success.title`));
         setAlertOpen(true);
         setFormData({ firstName: "", lastName: "", email: "", phone: "", service: "", message: "" });
       },
       (error) => {
-        setAlertMessage('Failed to send the message.');
-        setAlertType('error');
+        setAlertMessage(t(`alert.error.message`));
+        setAlertType(t(`alert.error.title`));
         setAlertOpen(true);
       }
     );
@@ -89,25 +91,25 @@ function Contact() {
           {/* Form */}
           <div className="xl:w-[64%] order-2 xl:order-none">
             <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl" onSubmit={sendEmail}>
-              <h3 className="text-4xl text-accent-default">Let's work together</h3>
-              <p className="text-white/80">Whether you have a project in mind or just want to chat, I'm here to help. Let's connect!</p>
+              <h3 className="text-4xl text-accent-default">{t('title')}</h3>
+              <p className="text-white/80">{t('subtitle')}</p>
             
               {/* Input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="text" name="firstName" placeholder="First name" onChange={handleChange} value={formData.firstName} required />
-                <Input type="text" name="lastName" placeholder="Last name" onChange={handleChange} value={formData.lastName} required />
-                <Input type="email" name="email" placeholder="Email" onChange={handleChange} value={formData.email} required />
-                <Input type="phone" name="phone" placeholder="Phone number" onChange={handleChange} value={formData.phone} />
+                <Input type="text" name="firstName" placeholder={t('form.firstName')} onChange={handleChange} value={formData.firstName} required />
+                <Input type="text" name="lastName" placeholder={t('form.lastName')} onChange={handleChange} value={formData.lastName} required />
+                <Input type="email" name="email" placeholder={t('form.email')} onChange={handleChange} value={formData.email} required />
+                <Input type="phone" name="phone" placeholder={t('form.phone')} onChange={handleChange} value={formData.phone} />
               </div>
 
               {/* Select */}
               <Select name="service" onValueChange={(value) => setFormData({ ...formData, service: value })}>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a service"/>
+                  <SelectValue placeholder={t('form.service.label')}/>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>Select a service</SelectLabel>
+                    <SelectLabel>{t('form.service.label')}</SelectLabel>
                     <SelectItem value="Frontend">Frontend</SelectItem>
                     <SelectItem value="Backend">Backend</SelectItem>
                     <SelectItem value="FullStack">FullStack</SelectItem>
@@ -116,10 +118,10 @@ function Contact() {
               </Select>
 
               {/* Textarea */}
-              <Textarea name="message" placeholder="Type your message here" className="h-[200px]" onChange={handleChange} value={formData.message} required />
+              <Textarea name="message" placeholder={t('form.message')} className="h-[200px]" onChange={handleChange} value={formData.message} required />
 
               {/* Button */}
-              <Button size="md" className="mx-auto max-w-60 " type="submit">Send message</Button>
+              <Button size="md" className="mx-auto max-w-60 " type="submit">{t('form.submit')}</Button>
             </form>
           </div>
 
@@ -134,7 +136,7 @@ function Contact() {
                       <div className="text-[28px]">{item.icon}</div>
                     </div>
                     <div className="flex-1">
-                      <p className="text-white/60">{item.title}</p>
+                      <p className="text-white/60">{t(`info.${item.title.toLowerCase()}.title`)}</p>
                       {item.link ? (
                         <Link href={item.link} target="_blank" rel="noopener noreferrer">
                           <h3 className="text-xl hover:text-accent-default transition-colors">{item.description}</h3>
@@ -154,8 +156,8 @@ function Contact() {
       <AlertDialog open={alertOpen} onOpenChange={setAlertOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>{alertType === 'success' ? 'Success' : 'Error'}</AlertDialogTitle>
-            <AlertDialogDescription>{alertMessage}</AlertDialogDescription>
+            <AlertDialogTitle>{t(`alert.${alertType}.title`)}</AlertDialogTitle>
+            <AlertDialogDescription>{t(`alert.${alertType}.message`)}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogAction onClick={() => setAlertOpen(false)}>OK</AlertDialogAction>

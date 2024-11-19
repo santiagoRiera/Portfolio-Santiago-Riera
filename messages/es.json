@@ -1,0 +1,186 @@
+{
+  "Homepage": {
+    "description": "Soy desarrollador web full-stack y actualmente estoy a mitad de mis estudion en la carrera de Ingeniería en Sistemas. Me especializo en JavaScript y frameworks como React y Next.js para construir soluciones escalables y eficientes, ademas, estoy estudiando continuamente para mejorar mis habilidades tanto en frontend como en backend.",
+    "title": "Desarrollador Web Fullstack",
+    "hello": "Hola,soy",
+    "name": "Santiago Riera"
+  },
+  "Work": {
+    "projects": {
+      "PingPanda": {
+        "category": "Aplicación SaaS - Fullstack",
+        "description": "PingPanda es una aplicación SaaS que te permite recibir notificaciones en tiempo real a través de Discord cuando ocurre un evento en tu aplicación. Autenticación con Clerk Auth. Pagos integrados con Stripe."
+      },
+      "CaseCobra":{
+        "category": "E-Commerce Fullstack",
+        "description": "Crea tu propia funda personalizada para teléfono con tus propias imágenes. Integración de pagos con Stripe. Autenticación de usuario con Kinde Auth. Panel de administración para gestionar pedidos y productos."
+      },
+      "DigitalHippo":{
+        "category": "Marketplace Fullstack",
+        "description": "Marketplace para productos digitales. Puedes comprar o subir y vender tus productos. Implementación de backend con Payload CMS. Integración de pagos con Stripe. Panel de administración para gestionar pedidos y productos."
+      }
+    }
+  },
+  "Resume": {
+    "about": {
+      "title": "Sobre mí",
+      "description": "Soy desarrollador de software con experiencia en desarrollo web. He trabajado con tecnologías como HTML, CSS, JavaScript, React, TailwindCSS y Next.js. Me apasiona aprender nuevas tecnologías y mejorar mis habilidades. Soy una persona flexible con buenas habilidades de comunicación y trabajo en equipo, siempre dispuesto a aprender. Me adapto rápidamente a los cambios y aprendo nuevas habilidades con facilidad.",
+      "info": {
+        "name": {
+          "title": "Nombre",
+          "description": "Santiago Riera"
+        },
+        "phone": {
+          "title": "Teléfono",
+          "description": "+54 3515529191"
+        },
+        "email": {
+          "title": "Correo",
+          "description": "santilrier@gmail.com"
+        },
+        "residence": {
+          "title": "Residencia",
+          "description": "Córdoba, Arg"
+        },
+        "languages": {
+          "title": "Idiomas",
+          "description": "Español(nativo), Inglés(B2)"
+        }
+      }
+    },
+    "experience": {
+      "title": "Experiencia",
+      "description": "Trabajé durante un año en una empresa local, comenzando con un período de formación que me ayudó a desarrollar mis habilidades. Una vez que me incorporé a mi rol, me centré en realizar actualizaciones de componentes React para mejorar la funcionalidad y la experiencia del usuario. Además, construí sitios web usando WordPress, lo que me permitió aplicar mis conocimientos de desarrollo web. Esta experiencia fue invaluable para ayudarme a refinar mis habilidades técnicas y aprender a colaborar efectivamente con un equipo en varios proyectos.",
+      "items": {
+        "position": "Desarrollador Web",
+        "duration": "2021-2022 (1 año)"
+      }
+    },
+    "education": {
+      "title": "Educación",
+      "description": "Soy estudiante de Ingeniería en Sistemas en la Universidad Tecnológica Nacional (Córdoba), donde estoy desarrollando una sólida base en programación y principios de desarrollo de software. Además, he tomado varios cursos en línea de desarrollo web y programación para mejorar mis habilidades. Algunos de estos cursos incluyen:",
+      "courses": {
+        "utn":{
+          "institution": "Universidad Tecnologica Nacional",
+          "degree": "Ingenieria en sistemas",
+          "duration": "2021 - Presente"
+        },
+        "auto":{
+          "institution": "Autoaprendizaje", 
+          "degree": "Next.js, Typescript y TailwindCSS",
+          "duration": "2024"
+        },
+        "coderhouse":{
+          "institution": "Coderhouse",
+          "degree": "React.js curso",
+          "duration": "2022"
+        },
+        "platzi": {
+          "institution": "Platzi",
+          "degree": "Javascript practico",
+          "duration": "2022"
+        },
+        "platzi2": {
+          "institution": "Platzi",
+          "degree": "React.js",
+          "duration": "2022"
+        },
+        "platzi3": {
+          "institution": "Platzi",
+          "degree": "Frontend developer",
+          "duration": "2022"
+        }
+      }
+    },
+    "skills": {
+      "title": "Habilidades",
+      "description": "Me gustra trabajar en equipo y además de mis habilidades técnicas, poseo habilidades interpersonales que mejoran mi trabajo en equipo. Tengo comunicación efectiva, lo que me permite expresar mis ideas claramente y facilitar la colaboración con colegas y clientes. Abordo los desafíos con una mentalidad analítica, buscando soluciones creativas y eficientes, y me adapto rápidamente a nuevas situaciones y retroalimentación. Valoro la colaboración y las contribuciones de otros, fomentando un ambiente positivo y productivo. Estas son mis principales habilidades técnicas y áreas de experiencia:",
+      "skillsData": {
+        "html": {
+          "description": "Conocimiento en escribir HTML5 semántico, asegurando accesibilidad y estructura amigable para SEO."
+        },
+        "css": {
+          "description": "Conocimiento en técnicas modernas de CSS3 incluyendo Flexbox y Grid para diseños responsivos."
+        },
+        "javascript": {
+          "description": "Conocimiento en escribir código JavaScript limpio, modular y mantenible."
+        },
+        "react": {
+          "description": "Experimentado en construir aplicaciones de una sola página (SPAs) dinámicas usando React, incluyendo hooks, context y arquitectura basada en componentes."
+        },
+        "nextjs": {
+          "description": "Experiencia en renderizado del lado del servidor (SSR) y construcción de aplicaciones web escalables y performantes con Next.js."
+        },
+        "tailwind": {
+          "description": "Hábil en crear diseños altamente responsivos y personalizados rápidamente con el framework CSS utility-first de Tailwind."
+        },
+        "express": {
+          "description": "Conocimiento básico en desarrollo de APIs RESTful y servicios backend usando Node.js y Express para aplicaciones escalables y performantes."
+        },
+        "typescript": {
+          "description": "Tengo un conocimiento básico de TypeScript y su uso para agregar tipos estáticos a JavaScript, mejorando la confiabilidad del código."
+        },
+        "sql": {
+          "description": "Conocimiento en trabajo con bases de datos relacionales (SQL) para gestión y almacenamiento de datos."
+        },
+        "postgresql": {
+          "description": "Experiencia en proyectos con PostgreSQL para almacenar y gestionar datos de aplicaciones web, usando Neon Serverless Postgres."
+        }
+      },
+      "interaction": {
+        "tap": "Toca para ver mas",
+        "hover": "Ver más"
+      }
+    }
+  },
+  "Contact": {
+    "title": "Trabajemos juntos",
+    "subtitle": "Ya sea que te interese mi perfil, tengas un proyecto en mente o solo quieras charlar, estoy aquí para ayudar. ¡Conectemos!",
+    "form": {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo electrónico",
+      "phone": "Número de teléfono",
+      "service": {
+        "label": "Selecciona un servicio"
+      },
+      "message": "Escribe tu mensaje aquí",
+      "submit": "Enviar mensaje",
+      "error": "Porfavor completa este campo"
+    },
+    "alert": {
+      "success": {
+        "title": "Éxito",
+        "message": "¡Mensaje enviado exitosamente!"
+      },
+      "error": {
+        "title": "Error",
+        "message": "Error al enviar el mensaje."
+      }
+    },
+    "info": {
+      "phone": {
+        "title": "Teléfono"
+      },
+      "email": {
+        "title": "Correo"
+      },
+      "linkedin": {
+        "title": "Linkedin"
+      }
+    }
+  },
+  "DownloadCV": {
+    "title": "Descargar CV",
+    "language": "(ESPAÑOL)",
+    "esMessage": "CV Español",
+    "enMessage": "CV Inglés"
+  },
+  "Navbar": {
+    "home": "Inicio",
+    "work": "Proyectos",
+    "resume": "Resumen",
+    "contact": "Contacto"
+  }
+}
+  

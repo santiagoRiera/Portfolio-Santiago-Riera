@@ -1,9 +1,13 @@
 import {JetBrains_Mono} from "next/font/google"
 import "./globals.css";
 //components
-import Header from "@/components/Header";
-import PageTransition from "@/components/PageTransition";
-import StairTransition from "@/components/StairTransition";
+import Header from "../../components/Header";
+import PageTransition from "../../components/PageTransition";
+import StairTransition from "../../components/StairTransition";
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages} from 'next-intl/server';
+import {notFound} from 'next/navigation';
+import {routing} from '../../i18n/routing';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"], 
@@ -61,13 +65,24 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children, params: {locale} }) {
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale)) {
+    notFound();
+  }
+ 
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={jetbrainsMono.variable}>
-        <Header/>
-        <StairTransition/>
-        <PageTransition>{children}</PageTransition>
+        <NextIntlClientProvider messages={messages}>
+          <Header/>
+          <StairTransition/>
+          <PageTransition>{children}</PageTransition>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

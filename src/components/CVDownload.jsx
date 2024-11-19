@@ -1,13 +1,14 @@
 "use client"
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 import { FiDownload, FiChevronDown } from "react-icons/fi";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "../components/ui/dropdown-menu";
+import { useTranslations } from "next-intl";
 
 const cvOptions = {
   English: {
@@ -22,6 +23,7 @@ const cvOptions = {
 
 export default function InteractiveCVDownload() {
   const [language, setLanguage] = useState("English");
+  const t = useTranslations("DownloadCV");
 
   return (
     <DropdownMenu modal={false}>
@@ -31,7 +33,7 @@ export default function InteractiveCVDownload() {
           size="lg"
           className="uppercase flex items-center gap-2 border-accent-default"
         >
-          <span>Download CV ({language})</span>
+          <span>{t("title") + " " + t("language")}</span>
           <FiChevronDown className="text-xl"/>
         </Button>
       </DropdownMenuTrigger>
@@ -42,7 +44,7 @@ export default function InteractiveCVDownload() {
             download={cvOptions.English.filename}
             className="flex items-center gap-2"
           >
-            <FiDownload /> English CV
+            <FiDownload /> {t("enMessage")}
           </a>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setLanguage("Spanish")}>
@@ -51,7 +53,7 @@ export default function InteractiveCVDownload() {
             download={cvOptions.Spanish.filename}
             className="flex items-center gap-2"
           >
-            <FiDownload /> Spanish CV
+            <FiDownload /> {t("esMessage")}
           </a>
         </DropdownMenuItem>
       </DropdownMenuContent>
